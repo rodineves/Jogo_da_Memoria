@@ -5,6 +5,12 @@
 #include<time.h>  //biblioteca pra gerar num aleatório
 #include<windows.h> //biblioteca pro sleep()
 
+void clique_enter();
+
+void apagar_tela(){
+	system("cls");
+}
+
 int main(){
 	setlocale(LC_ALL,"Portuguese");
 	
@@ -16,9 +22,8 @@ int main(){
 	char op, c;
 	
 	printf("\n\n\n\n             Olá, seja bem-vindo(a) ao joguinho da memória! Clique no ENTER do seu teclado para começar...\n\n\n");
-	do{
-		c = getch();
-	} while(c != 13);
+	
+	clique_enter();
 	
 	printf("       O jogo será simples, as regras são as seguintes:\n\n");	
 	printf("      -> Serão apresentados alguns números, por alguns segundos, na tela.\n\n");	
@@ -32,11 +37,9 @@ int main(){
 	
 		printf("                Para escolher a dificuldade, digite o número que aparece mais à direita:");
 		
-		do{
-			c = getch();
-		} while(c != 13);
+		clique_enter();
 		
-		system("cls");
+		apagar_tela();
 	
 	do{  // se quer reiniciar o game //
 	
@@ -58,15 +61,10 @@ int main(){
 			switch(dificult){
 				
 				case 1:
-				
 					aux3 = 1; // pra passar pro proximo chute
-					
 					cont = 2; // usa no caso de repetir o num digitado
-					
 					cont2 = 0; // se ele perder no chute 1, n lê os chutes seguintes
-					
 					pontos = 0;
-					
 					
 					printf("\n        Você escolheu a dificuldade 'Normalzin'. Então, clique no ENTER para apresentar os números que deverão\n");
 					printf("        ser decorados. Logo após o contador a seguir:\n\n\n");
@@ -1072,4 +1070,11 @@ int main(){
 	} while(op == 's');
 
 	return 0;
+}
+
+void clique_enter(){
+	char c;
+	do{
+		c = getch();
+	} while(c != 13);
 }
