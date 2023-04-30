@@ -8,6 +8,8 @@
 void clique_enter();
 void apagar_tela();
 void regras();
+int escolher_dificuldade();
+char jogar_novamente();
 
 int main(){
 	setlocale(LC_ALL,"Portuguese");
@@ -23,19 +25,8 @@ int main(){
 	
 	do{  // se quer reiniciar o game //
 		do{	   //caso ele n digite nenhuma das opções.//  
-		
-			printf("\n\n\n\t                   __________________________________________________________________\n");
-			printf("\t                  |                                                                  |\n");
-			printf("\t                  |  Dificuldade: Normalzin (3 números, 8 segundos)--------------- 1 |\n");
-			printf("\t                  |                                                                  |\n");
-			printf("\t                  |  Dificuldade: Marromeno (5 números, 7 segundos )-------------- 2 |\n");
-			printf("\t                  |                                                                  |\n");
-			printf("\t                  |  Dificuldade: Calma vei (7 números, 6 segundos)--------------- 3 |\n");
-			printf("\t                  |                                                                  |\n");
-			printf("\t                  |  Dificuldade: PERAI PÔ (9 números, 5 segundos)---------------- 4 |\n");
-			printf("\t                  |__________________________________________________________________|\n\n");
-			printf("\t                                 Digite aqui a dificuldade: ");
-			scanf("%d", &dificult);
+			
+			dificult = escolher_dificuldade();
 			
 			switch(dificult){
 				
@@ -219,9 +210,7 @@ int main(){
 						printf("\n\t UHUUUULLL, você conseguiu acertar todos os números, você tem uma memória muito boa, PARABEENS!!\n");
 					}
 					
-				break;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
+				break;					
 				
 				case 2:
 				
@@ -249,24 +238,19 @@ int main(){
 					Sleep(1000);
 					
 			        printf("\n\n\n\n                      [");
-			        
-					srand(time(NULL));				
-					
-					for(i = 0 ; i < 9 ; i++){	// Ver se os numeros random n vão repetir //	
-									
+					srand(time(NULL));	
+								
+					for(i = 0 ; i < 9 ; i++){	// Ver se os numeros random n vão repetir //				
 						v[i] = rand() % 50;
 						auxRam = 0;
-							
 							for(j = 0 ; j < i && auxRam == 0 ; j++){
-								
 								if(v[i] == v[j]){
 									auxRam = 1;
 								}
 							}
 							
 							if(auxRam == 1)
-								i--;			
-				        			
+								i--;					
 					}
 					
 					for(i = 0 ; i < 5 ; i++ ){	
@@ -276,7 +260,7 @@ int main(){
 					printf("]");
 					
 					Sleep(8000);
-					system("cls");
+					apagar_tela();
 					
 					printf("\n\tVamos ver quantos numeros voce decorou. Voce tem 3 chances.\n\n");
 					acertos = 4;
@@ -292,7 +276,6 @@ int main(){
 							verif[j] = chute;
 							
 								for(i = 0 ; i < 5 ; i++){
-									
 									if(chute == v[i]){
 										aux++;
 										break;	
@@ -370,15 +353,13 @@ int main(){
 										acertos--;
 										
 									} else {
-										
 										if(aux == 0){
 												
 											erros--;
 												if(erros == 0){
 													break;
 												}
-											printf("\n\t\t--> Poxa, você errou, tu tens %d chances. Tente novamente...\n\n", erros);
-														
+											printf("\n\t\t--> Poxa, você errou, tu tens %d chances. Tente novamente...\n\n", erros);		
 										}				
 									}		
 									
@@ -398,9 +379,7 @@ int main(){
 									}
 									
 									if(pontos >= 3 && pontos < 5){
-										
 										printf("\n\n\tSuas chances acabaram. Você fez %d pontos, então sua memória até boa, mas da pra melhorar :)\n\n", pontos); Sleep(2000);
-										
 									}
 									
 									printf("\tBut don't give up, you're brazzillian!!!\n\n"); Sleep(1000);
@@ -419,17 +398,12 @@ int main(){
 						} while(aux3 == cont &&  aux3 < 6  &&  erros != 0  ); // repete até a pessoa perder ou ganhar
 					}
 					
-					
 					if(aux3 == 6){ //se usuario ganhar
-						
 						system("cls"); Sleep(1000);
 						printf("\n\t UHUUUULLL, você conseguiu acertar todos os números, parabéns, você tem uma memória muito boa, PARABEENS!!");
-
 					}
 					
 				break;
-			
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// dificuldade 2	
 		
 				case 3:
 					
@@ -442,11 +416,9 @@ int main(){
 					
 					printf("                            ");
 							
-						for(i = 5; i >= 1; i--){
-							
+						for(i = 5; i >= 1; i--){	
 							printf("%d...", i);   //contagem pra começar o game.
 					       	Sleep(800); 
-					        
 					   	}
 				   	
 					printf("GOOOO!!!!!");
@@ -454,24 +426,20 @@ int main(){
 					system("cls");
 					Sleep(800);
 						
-				       printf("\n\n\n\n                      [");
+				    printf("\n\n\n\n                      [");
 				        
 					srand(time(NULL));				
 						
-					for(i = 0 ; i < 9 ; i++){	// Ver se os numeros random n vão repetir //	
-									
+					for(i = 0 ; i < 9 ; i++){	// Ver se os numeros random n vão repetir //			
 						v[i] = rand() % 50;
-						auxRam = 0;
-								
-							for(j = 0 ; j < i && auxRam == 0 ; j++){
-								
-								if(v[i] == v[j]){
-									auxRam = 1;
-								}
+						auxRam = 0;	
+						for(j = 0 ; j < i && auxRam == 0 ; j++){
+							if(v[i] == v[j]){
+								auxRam = 1;
 							}
-								
-							if(auxRam == 1)
-								i--;					
+						}
+						if(auxRam == 1)
+							i--;					
 					}
 					
 					for(i = 0 ; i < 7 ; i++ ){	
@@ -489,11 +457,9 @@ int main(){
 					j = 0;
 
 					if(aux3 == 1){	// inicio do chute 1: //
-					
 						erros = 3;  
 						
-						do{	
-							
+						do{		
 							aux = 0;
 							printf("\tDigite um dos números que apareceu acima: ");
 							scanf("%d", &chute);
@@ -518,8 +484,7 @@ int main(){
 											break;
 										}
 									
-									printf("\n\t\tPoxa, você errou, tu tens %d chances...\n\n", erros);
-										
+									printf("\n\t\tPoxa, você errou, tu tens %d chances...\n\n", erros);		
 								}				
 							}		
 						} while (aux != 1 && erros != 0);  // fim do primeiro chute. //
@@ -533,9 +498,7 @@ int main(){
 							printf("\tEstes foram os números que devieriam ter sidos decorados:");
 							
 								for(i = 0 ; i < 7 ; i++ ){	
-									
 									printf(" | %d | ", v[i]);
-							
 								}
 							
 							printf("\n");
@@ -550,7 +513,6 @@ int main(){
 								verif[++j] = 0;
 								do{
 									do{      // se ele repetir o numero digitado //
-										
 										aux2 = 0;
 										verif[j] = 0;
 										aux = 0;
@@ -631,7 +593,7 @@ int main(){
 					
 					
 				break;
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// dificuldade 3
+		
 				case 4:
 					
 					aux3 = 1; // pra passar pro proximo chute
@@ -654,11 +616,9 @@ int main(){
 					Sleep(800);
 						
 				    printf("\n\n\n\n                      [");
-				        
 					srand(time(NULL));				
 						
-					for(i = 0 ; i < 9 ; i++){	// Ver se os numeros random n vão repetir //	
-										
+					for(i = 0 ; i < 9 ; i++){	// Ver se os numeros random n vão repetir //				
 						v[i] = rand() % 50;
 						auxRam = 0;
 								
@@ -668,14 +628,12 @@ int main(){
 									auxRam = 1;
 								}	
 							}
-								
 							if(auxRam == 1)
 								i--;			
 					        			
 					}
 					for(i = 0 ; i < 9 ; i++ ){	
 						printf("  | %d |  ", v[i]);	// imprime os numeros aleatorios. //
-								
 					}
 											
 					printf("]");
@@ -773,7 +731,6 @@ int main(){
 												if(erros == 0){
 													break;
 												}
-												
 											printf("\n\t\tPoxa, você errou, tu tens %d chances. Tente novamente...\n\n", erros);			
 										}				
 									}		
@@ -801,51 +758,30 @@ int main(){
 									printf("\tEstes são os números que devieriam ter sidos decorados:");
 										
 										for(i = 0 ; i < 9 ; i++ ){	
-										
 											printf(" | %d | ", v[i]);
-									
 										}
 										
 									Sleep(1000);
 									printf("\n");
-									
 								} // fim do se a pessoa perder					
 							}
 							
 						} while(aux3 == cont &&  aux3 < 8  &&  erros != 0  );
 					}
 							
-				break;
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
+				break;	
 								
 				default:
-					
 					printf("\n\t\t\tVocê não digitou nenhuma das opções, tente novamente...");
 					Sleep(1800);
-					system("cls");
-								
+					system("cls");			
 				break;		
 			}	
 				
 		} while (dificult != 1 && dificult != 2 && dificult != 3 && dificult != 4 );
 			
 		do{	
-			printf("\n\tVocê deseja jogar novamente? Se sim, digite 's', se não, digite 'n' : ");
-			fflush(stdin);
-			scanf("%c", &op);
-				
-			if(op == 's'){
-				printf("\n\tOK, vamos recomeçar...\n"); Sleep(1000); system("cls");
-			} else {
-				if(op =='n'){
-					printf("\n\tOK, muito obrigado por jogar meu joguinho :D\n");
-					printf("\tQuem puder ajudar o criador do joguinho so mandar aquele PIX maroto pra chave: 111.222.333-66 ksksksk\n");
-				} else {
-					printf("\t\nVocê não digitou nenhuma das opções, try again...\n");
-				}	
-			}
-			
+			op = jogar_novamente();
 		} while(op != 's' && op != 'n' );
 			
 	} while(op == 's');
@@ -881,3 +817,41 @@ void regras(){
 	clique_enter();
 	apagar_tela();
 }
+
+int escolher_dificuldade(){
+	int dificult;
+	printf("\n\n\n\t                   __________________________________________________________________\n");
+	printf("\t                  |                                                                  |\n");
+	printf("\t                  |  Dificuldade: Normalzin (3 números, 8 segundos)--------------- 1 |\n");
+	printf("\t                  |                                                                  |\n");
+	printf("\t                  |  Dificuldade: Marromeno (5 números, 7 segundos )-------------- 2 |\n");
+	printf("\t                  |                                                                  |\n");
+	printf("\t                  |  Dificuldade: Calma vei (7 números, 6 segundos)--------------- 3 |\n");
+	printf("\t                  |                                                                  |\n");
+	printf("\t                  |  Dificuldade: PERAI PÔ (9 números, 5 segundos)---------------- 4 |\n");
+	printf("\t                  |__________________________________________________________________|\n\n");
+	printf("\t                                 Digite aqui a dificuldade: ");
+	scanf("%d", &dificult);
+	return dificult;
+}
+
+char jogar_novamente(){
+	
+	char op;
+	printf("\n\tVocê deseja jogar novamente? Se sim, digite 's', se não, digite 'n' : ");
+	fflush(stdin);
+	scanf("%c", &op);
+		
+	if(op == 's'){
+		printf("\n\tOK, vamos recomeçar...\n"); Sleep(1000); system("cls");
+	} else {
+		if(op =='n'){
+			printf("\n\tOK, muito obrigado por jogar meu joguinho :D\n");
+			printf("\tQuem puder ajudar o criador do joguinho so mandar aquele PIX maroto pra chave: 111.222.333-66 ksksksk\n");
+		} else {
+			printf("\t\nVocê não digitou nenhuma das opções, try again...\n");
+		}	
+	}
+	return op;
+}
+
